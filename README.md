@@ -4,7 +4,7 @@
 
 Windows companion for **GTA 2** that plays pre-recorded mission brief voices, sets HUD subtitle language, and adjusts in-game sound levels while you play.
 
-This repository contains the **end-user client**: the C# app, runtime data files shipped beside the executable, and scripts to build language packs. Pre-built ZIPs and installers (with `tts_cache` and `pack_data.dat`) are on Google Drive below.
+This repository contains the **end-user client** source (C#). Pre-built ZIPs and installers (with voices and packaging assets) are on Google Drive below.
 
 ## Download (pre-built releases)
 
@@ -52,31 +52,19 @@ You can set the `GTA2_ROOT` environment variable instead of choosing the folder 
 | Path | Purpose |
 |------|---------|
 | `user_client/GTA2BriefTTS.User/` | C# WinForms source |
-| `config.json` | Default/template settings (user installs get a trimmed copy) |
-| `addresses.json`, `brief_signatures.json`, `frida_agent.js` | Supporting files shipped beside the published `.exe` (read-only at runtime) |
-| `pack_data.py`, `build_release.py` | Build `pack_data.dat` and user ZIP/installer |
-| `release/` | Inno Setup scripts and user-facing `README_USER_*.txt` |
-| `README.txt` | Short notes copied into release folders |
+| `build_release.py` | Maintainer build script (local checkout only; not required to run the app) |
 
-Large assets (`tts_cache/`, built `.exe`, installers) are **not** in Git — use the Google Drive builds above.
+Runtime files (`config.json`, `*.js`, Inno/`release/` output, `tts_cache/`, installers) are **not** in Git — use the Google Drive builds above.
 
 ## Build from source (maintainers)
 
-**Prerequisites:** [.NET 9 SDK](https://dotnet.microsoft.com/download), Python 3.11+ for packaging.
-
-1. Publish the client:
+**Prerequisites:** [.NET 9 SDK](https://dotnet.microsoft.com/download) on Windows.
 
 ```powershell
-dotnet publish user_client\GTA2BriefTTS.User\GTA2BriefTTS.User.csproj -c Release -r win-x64 --self-contained true -o release\build\csharp-user-publish
+dotnet publish user_client\GTA2BriefTTS.User\GTA2BriefTTS.User.csproj -c Release -r win-x64 --self-contained true
 ```
 
-2. Build a language pack (needs `tts_cache\<lang>\` from a local bake — not included in this repo):
-
-```powershell
-python build_release.py --user-pack ru en --version 1.0.0 --installer --skip-exe
-```
-
-Output: `release/dist/GTA2BriefTTS-<version>-<lang>/` and optional setup executables when Inno Setup 6 is installed.
+Publish output is under `user_client\GTA2BriefTTS.User\bin\Release\net9.0-windows\win-x64\publish\`. A playable install still needs the assets from a Google Drive package above.
 
 ## License
 
