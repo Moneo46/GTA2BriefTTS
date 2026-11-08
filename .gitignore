@@ -1,0 +1,30 @@
+## Build artifacts
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+*.csproj.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio / Rider
+.vs/
+.idea/
+*.rsuser
+
+## NuGet
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+## Local secrets / overrides
+*.local.json
+secrets.json
