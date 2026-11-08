@@ -1,8 +1,10 @@
-# GTA2 Brief TTS — user client (C#)
+# GTA2 Brief TTS
 
-Windows GUI companion for **GTA 2** that plays pre-recorded mission brief voices, adjusts HUD subtitle language, and tweaks in-game sound levels while the game is running.
+**GTA2 Brief TTS does not modify any game files.** It only **reads** your existing GTA 2 installation (for example GXT text and paths you point it at). Settings are stored in this tool’s own folder (`config.json`); nothing is written into the game directory.
 
-This repository contains the **C# WinForms client** only. Release packages (voice packs, Frida agent, baked cache, installers) are distributed separately.
+Windows companion for **GTA 2** that plays pre-recorded mission brief voices, sets HUD subtitle language, and adjusts in-game sound levels while you play.
+
+This repository contains the **end-user client**: the C# app, runtime data files shipped beside the executable, and scripts to build language packs. Pre-built ZIPs and installers (with `tts_cache` and `pack_data.dat`) are on Google Drive below.
 
 ## Download (pre-built releases)
 
@@ -12,7 +14,7 @@ This repository contains the **C# WinForms client** only. Release packages (voic
 | [GTA2BriefTTS-1.0.0-en-win64.zip](https://drive.google.com/file/d/1L3FhP2vA2Jj2Hb2jOpQVZV9ydUlATODw/view?usp=drive_link) | English brief voices — portable ZIP |
 | [GTA2BriefTTS-1.0.0-en-setup.exe](https://drive.google.com/file/d/16qs5MmMdBWo7-xEwH7HGRUUN8F-Ef05n/view?usp=drive_link) | English voices — Windows installer |
 
-> **Note:** Google Drive may ask you to sign in. Use *Download anyway* if your browser warns about virus scan limits on large files.
+> Google Drive may ask you to sign in. If the browser warns about scan limits on large files, choose **Download anyway**.
 
 ## Installation (end users)
 
@@ -24,47 +26,57 @@ This repository contains the **C# WinForms client** only. Release packages (voic
 
 ### Option B — portable ZIP (Russian or English)
 
-1. Download the ZIP for your language (links in the table above).
-2. Extract to any folder (e.g. `C:\Games\GTA2BriefTTS`).
-3. Launch `GTA2BriefTTS.exe`.
-4. Set the game directory to the folder that contains `GTA2.exe` (use **Browse…**), then click **Save**.
+1. Download the ZIP for your language (table above).
+2. Extract to any folder (for example `C:\Games\GTA2BriefTTS`).
+3. Run `GTA2BriefTTS.exe`.
+4. Set the game directory to the folder that contains `GTA2.exe` (**Browse…**), then **Save**.
 
 ### Requirements
 
 - **Windows 10** or newer (64-bit)
-- A valid **GTA 2** installation with `GTA2.exe`
-- No Internet connection required for brief playback (voices are included in the package)
+- A **GTA 2** install with `GTA2.exe`
+- No Internet required for brief playback (voices are in the package)
 
 ### How to use
 
 1. Open **GTA2 Brief TTS**.
 2. Confirm the game folder path.
 3. Set HUD subtitle language, brief voice language, and volumes if needed.
-4. Click **Save**, then **Start** — the app launches GTA 2 when needed and plays mission brief audio.
+4. Click **Save**, then **Start** — the app starts GTA 2 when needed and plays mission brief audio.
 5. Click **Stop** or close the window to end the session.
 
 You can set the `GTA2_ROOT` environment variable instead of choosing the folder in the app.
 
-### What ships in a release package (not in this repo)
+## Repository layout
 
-| File / folder | Role |
-|---------------|------|
-| `GTA2BriefTTS.exe` | This client (built from `GTA2BriefTTS.User/`) |
-| `config.json` | Game path, languages, volumes |
-| `pack_data.dat` | Voice/brief tables |
-| `frida_agent.js`, `addresses.json`, `brief_signatures.json` | Game hooks |
-| `tts_cache/<lang>/` | Pre-baked MP3 brief cache |
+| Path | Purpose |
+|------|---------|
+| `user_client/GTA2BriefTTS.User/` | C# WinForms source |
+| `config.json` | Default/template settings (user installs get a trimmed copy) |
+| `addresses.json`, `brief_signatures.json`, `frida_agent.js` | Supporting files shipped beside the published `.exe` (read-only at runtime) |
+| `pack_data.py`, `build_release.py` | Build `pack_data.dat` and user ZIP/installer |
+| `release/` | Inno Setup scripts and user-facing `README_USER_*.txt` |
+| `README.txt` | Short notes copied into release folders |
 
-## Build from source (developers)
+Large assets (`tts_cache/`, built `.exe`, installers) are **not** in Git — use the Google Drive builds above.
 
-**Prerequisites:** [.NET 9 SDK](https://dotnet.microsoft.com/download) on Windows.
+## Build from source (maintainers)
+
+**Prerequisites:** [.NET 9 SDK](https://dotnet.microsoft.com/download), Python 3.11+ for packaging.
+
+1. Publish the client:
 
 ```powershell
-cd GTA2BriefTTS.User
-dotnet publish GTA2BriefTTS.User.csproj -c Release -r win-x64 --self-contained false
+dotnet publish user_client\GTA2BriefTTS.User\GTA2BriefTTS.User.csproj -c Release -r win-x64 --self-contained true -o release\build\csharp-user-publish
 ```
 
-Output is under `bin\Release\net9.0-windows\win-x64\publish\`. A full user install still needs the release assets (`pack_data.dat`, `tts_cache`, Frida files) from a voice pack ZIP above.
+2. Build a language pack (needs `tts_cache\<lang>\` from a local bake — not included in this repo):
+
+```powershell
+python build_release.py --user-pack ru en --version 1.0.0 --installer --skip-exe
+```
+
+Output: `release/dist/GTA2BriefTTS-<version>-<lang>/` and optional setup executables when Inno Setup 6 is installed.
 
 ## License
 

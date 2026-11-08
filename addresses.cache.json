@@ -1,0 +1,11 @@
+{
+  "exe_sha256": "5adbceb98e2fd6fc8f2d426b17c89693f8ca0c73b464ee963b5cd0781bbbd38a",
+  "exe_size": 1740800,
+  "exe_path": "H:\\Games\\gta2\\GTA2.exe",
+  "discovered_at": "2026-10-23T09:20:34.000035+00:00",
+  "set_hud_brief_rva": "0xD6750",
+  "draw_brief_rva": "0xD9430",
+  "brief_curr_briefs_offset": "0x6F8",
+  "brief_entry_id_offset": "0x0",
+  "scan_method": "signatures"
+}

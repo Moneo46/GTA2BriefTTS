@@ -1,30 +1,41 @@
-## Build artifacts
+## .NET
 [Bb]in/
 [Oo]bj/
-[Dd]ebug/
-[Rr]elease/
 publish/
+user_client/**/[Dd]ebug/
+user_client/**/[Rr]elease/
 *.csproj.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-## Visual Studio / Rider
 .vs/
 .idea/
-*.rsuser
 
-## NuGet
-packages/
-project.lock.json
-project.fragment.lock.json
-artifacts/
+## Python (dev tooling not shipped to users)
+.venv*/
+__pycache__/
+*.py[cod]
+*.spec
 
-## OS
+*.py
+!pack_data.py
+!build_release.py
+
+## User voice cache (download baked packs or run maintainer bake locally)
+tts_cache/
+recordings/
+
+## Release output
+release/build/
+release/dist/
+release/*.exe
+release/GTA2BriefTTS.iss
+
+## OS / secrets
 Thumbs.db
 Desktop.ini
 .DS_Store
-
-## Local secrets / overrides
 *.local.json
 secrets.json
+
+## Misc dev docs at repo root
+requirements.txt
+VOICE_OPTIONS.md
+build release.txt

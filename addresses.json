@@ -1,0 +1,10 @@
+{
+  "build": "GTA2.exe 11.44 freeware (ImageBase 0x3F0000)",
+  "note": "Fallback RVAs if auto_addresses scan fails. Normally brief_scanner.py finds hooks from brief_signatures.json.",
+  "gHud_ptr_abs": "0x672F40",
+  "hud_brief_offset": "0xE4",
+  "brief_curr_briefs_offset": "0x6F8",
+  "brief_entry_id_offset": "0x0",
+  "draw_brief_rva": "0xD9430",
+  "set_hud_brief_rva": "0xD6750"
+}
