@@ -11,9 +11,9 @@ This repository contains the **end-user client** source (C#). Pre-built ZIPs and
 | Package | Description |
 |--------|-------------|
 | [GTA2BriefTTS-1.0.0-en-setup.exe](https://drive.google.com/file/d/16qs5MmMdBWo7-xEwH7HGRUUN8F-Ef05n/view?usp=drive_link) | English voices — Windows installer |
-| [GTA2BriefTTS-1.0.0-en-win64.zip](https://drive.google.com/file/d/1L3FhP2vA2Jj2Hb2jOpQVZV9ydUlATODw/view?usp=drive_link) | English brief voices — portable ZIP |
+| [GTA2BriefTTS-1.0.0-en-win64.zip](https://drive.google.com/file/d/1L3FhP2vA2Jj2Hb2jOpQVZV9ydUlATODw/view?usp=drive_link) | English voices — portable ZIP |
 | [GTA2BriefTTS-1.0.0-ru-setup.exe](https://drive.google.com/file/d/1c326U2B1L_eq-hQQADB1FA41Yi9-br_L/view?usp=drive_link) | Russian voices — Windows installer |
-| [GTA2BriefTTS-1.0.0-ru-win64.zip](https://drive.google.com/file/d/1piEXQ66I9oy0oV3QH27TQ2hSvsvGtP2B/view?usp=drive_link) | Russian brief voices — portable ZIP |
+| [GTA2BriefTTS-1.0.0-ru-win64.zip](https://drive.google.com/file/d/1piEXQ66I9oy0oV3QH27TQ2hSvsvGtP2B/view?usp=drive_link) | Russian voices — portable ZIP |
 
 > Google Drive may ask you to sign in. If the browser warns about scan limits on large files, choose **Download anyway**.
 
