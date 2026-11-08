@@ -15,9 +15,6 @@ __pycache__/
 *.spec
 
 *.py
-!build_release.py
-
-pack_data.py
 
 ## Runtime / packaging (local or release builds — not in Git)
 release/

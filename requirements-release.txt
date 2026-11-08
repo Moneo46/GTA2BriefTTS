@@ -1,3 +1,0 @@
-# Minimal deps for PyInstaller release (use a clean venv: python -m venv .venv-release)
--r requirements.txt
-pyinstaller>=6.0

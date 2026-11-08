@@ -52,7 +52,6 @@ You can set the `GTA2_ROOT` environment variable instead of choosing the folder 
 | Path | Purpose |
 |------|---------|
 | `user_client/GTA2BriefTTS.User/` | C# WinForms source |
-| `build_release.py` | Maintainer build script (local checkout only; not required to run the app) |
 
 Runtime files (`config.json`, `*.js`, Inno/`release/` output, `tts_cache/`, installers) are **not** in Git — use the Google Drive builds above.
 
