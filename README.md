@@ -66,6 +66,14 @@ dotnet publish user_client\GTA2BriefTTS.User\GTA2BriefTTS.User.csproj -c Release
 
 Publish output is under `user_client\GTA2BriefTTS.User\bin\Release\net9.0-windows\win-x64\publish\`. A playable install still needs the assets from a Google Drive package above.
 
+## Support the project
+
+[![Support on Boosty](https://img.shields.io/badge/Boosty-Support%20on%20Boosty-EE8208?style=flat-square)](https://boosty.to/mon_studio)
+
+Releases stay free on GitHub and Google Drive. If you want to help fund better voices, tooling, and the next fan projects, subscribe on **[Mon studio @ Boosty](https://boosty.to/mon_studio)** — development news, early access, and votes on what we tackle next.
+
+**Поддержка:** [boosty.to/mon_studio](https://boosty.to/mon_studio) — новости разработки, ранний доступ и голосования по проектам.
+
 ## License
 
 Private repository — rights reserved unless stated otherwise by the owner.
